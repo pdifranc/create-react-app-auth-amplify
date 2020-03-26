@@ -22,7 +22,7 @@ if(process.env.ENV && process.env.ENV !== "NONE") {
   tableName = tableName + '-' + process.env.ENV;
 }
 
-const userIdPresent = false; // TODO: update in case is required to use that definition
+const userIdPresent = true; // TODO: update in case is required to use that definition
 const partitionKeyName = "ticketId";
 const partitionKeyType = "S";
 const sortKeyName = "userId";
@@ -95,6 +95,8 @@ app.get(path + hashKeyPath, function(req, res) {
  *****************************************/
 
 app.get(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
+  console.log(req);
+  console.log(res);
   var params = {};
   if (userIdPresent && req.apiGateway) {
     params[partitionKeyName] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
