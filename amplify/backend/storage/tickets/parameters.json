@@ -1,7 +1,0 @@
-{
-    "tableName": "tickets",
-    "partitionKeyName": "ticketId",
-    "partitionKeyType": "S",
-    "sortKeyName": "userId",
-    "sortKeyType": "S"
-}
